@@ -11,10 +11,10 @@ const CharacterSearcher = () => {
   let [searchParams, setSearchParams] = useSearchParams();
 
   const initialFetchParams = {
-    status: searchParams.get("status"),
-    species: searchParams.get("species"),
-    gender: searchParams.get("gender"),
-    type: searchParams.get("type"),
+    status: searchParams.get("status") || '',
+    species: searchParams.get("species") || '',
+    gender: searchParams.get("gender") || '',
+    type: searchParams.get("type") || '',
   };
 
   const [fetchParams, setFetchParams] = useState({ ...initialFetchParams });
