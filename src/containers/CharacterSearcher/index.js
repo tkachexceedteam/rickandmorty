@@ -11,10 +11,11 @@ const CharacterSearcher = () => {
   let [searchParams, setSearchParams] = useSearchParams();
 
   const initialFetchParams = {
-    status: searchParams.get("status") || '',
-    species: searchParams.get("species") || '',
-    gender: searchParams.get("gender") || '',
-    type: searchParams.get("type") || '',
+    status: searchParams.get("status") || "",
+    species: searchParams.get("species") || "",
+    gender: searchParams.get("gender") || "",
+    type: searchParams.get("type") || "",
+    page: +searchParams.get("page") || 1,
   };
 
   const [fetchParams, setFetchParams] = useState({ ...initialFetchParams });
@@ -26,12 +27,17 @@ const CharacterSearcher = () => {
   });
 
   const onQueryParamsChange = (params) => {
-    setSearchParams(params);
     setFetchParams(params);
+
+    const pureParams = {};
+    for (let key in params) {
+      if (params[key]) pureParams[key] = params[key];
+    }
+    setSearchParams(pureParams);
   };
 
   const onFilterSubmit = (filterParams) => {
-    onQueryParamsChange({ ...fetchParams, ...filterParams });
+    onQueryParamsChange({ ...fetchParams, ...filterParams, page: 1 });
   };
 
   const onPageChange = (page) => {
