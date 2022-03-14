@@ -1,3 +1,7 @@
+# Rick and Morty character searcher
+Click here to open a working build
+https://tkachexceedteam.github.io/rickandmorty/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
